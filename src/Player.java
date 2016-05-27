@@ -10,20 +10,39 @@ public class Player {
     int locationY = 5;
 
     //makes player move
-    public void movePlayer (Player player, String input){
+    public void movePlayer (Player player, String input, Floor floor){
 
         switch(input){
-            //move ???
-            case "d": player.locationY++;
+
+            //if blocks prevent player from moving off of grid
+
+            //move right
+            case "d":
+                if (player.locationY != floor.getWidth() - 1) {
+                    player.locationY++;
+                }
+
                 break;
+
             //move left
-            case "a": player.locationY--;
+            case "a": if (player.locationY != 0) {
+                player.locationY--;
+                }
+
                 break;
-            //move ???
-            case "w": player.locationX--;
+
+            //move up
+            case "w": if (player.locationX != 0) {
+                player.locationX--;
+                }
+
                 break;
+
             //move down
-            case "s": player.locationX++;
+            case "s": if (player.locationX != floor.getHeight() - 1) {
+                player.locationX++;
+                }
+
                 break;
         }
 

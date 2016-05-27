@@ -13,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
-
+        //main game loop
         while (true){
 
             char[][] map = Floor.makeFloor(width, height, player);
@@ -21,7 +21,7 @@ public class Main {
             Floor.toString(floor1);
 
             String input = scanner.next();
-            player.movePlayer(player, input);
+            player.movePlayer(player, input, floor1);
 
         }
     }

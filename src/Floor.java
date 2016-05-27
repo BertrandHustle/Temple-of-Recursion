@@ -43,6 +43,14 @@ public class Floor {
 
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public char[][] getMap() {
         return map;
     }
