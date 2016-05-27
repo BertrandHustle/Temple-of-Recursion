@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * These are the floors/maps/grids for the dungeon
  */
@@ -7,6 +9,7 @@ public class Floor {
     private int width;
     private int height;
     private char[][] map;
+    private ArrayList<Enemy> enemiesOnFloor = new ArrayList<>();
 
     public Floor(int width, int height, char[][] map) {
         this.width = width;
@@ -14,7 +17,7 @@ public class Floor {
         this.map = map;
     }
 
-    public static char[][] makeFloor (int width, int height, Player player){
+    public static char[][] makeFloor (int width, int height, Player player, ArrayList<Enemy> enemies){
 
         char [][] floor = new char[width][height];
 
@@ -26,6 +29,15 @@ public class Floor {
                     floor[x][y] = player.toChar();
                 } else {
                     floor[x][y] = '_';
+                }
+
+                //prints enemies on maps
+                for (Enemy enemy : enemies){
+                    if(enemy.getLocationX() == x && enemy.getLocationY() == y) {
+                        floor[x][y] = enemy.toChar();
+                    } else {
+                        floor[x][y] = '_';
+                    }
                 }
             }
         }
@@ -57,5 +69,9 @@ public class Floor {
 
     public void setMap(char[][] map) {
         this.map = map;
+    }
+
+    public ArrayList<Enemy> getEnemiesOnFloor() {
+        return enemiesOnFloor;
     }
 }
