@@ -1,6 +1,7 @@
 /**
  * These are the floors/maps/grids for the dungeon
  */
+
 public class Floor {
 
     private int width;

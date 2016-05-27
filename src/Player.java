@@ -1,8 +1,8 @@
-import java.util.Scanner;
 
 /**
- * This is the player
+ * This denotes the player
  */
+
 public class Player {
 
     char model = '@';
@@ -13,14 +13,18 @@ public class Player {
     public void movePlayer (Player player, String input){
 
         switch(input){
-            //move up
-            case "w": player.locationY++;
-            //move down
-            case "s": player.locationY--;
+            //move ???
+            case "d": player.locationY++;
+                break;
             //move left
-            case "a": player.locationX--;
-            //move right
-            case "d": player.locationX++;
+            case "a": player.locationY--;
+                break;
+            //move ???
+            case "w": player.locationX--;
+                break;
+            //move down
+            case "s": player.locationX++;
+                break;
         }
 
     }
