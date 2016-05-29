@@ -18,7 +18,7 @@ public class Main {
 
         //enemy list
         Enemy.Grunt grunt1 = new Enemy().new Grunt();
-        ArrayList<Enemy> enemiesOnFloor = new ArrayList<Enemy>(Arrays.asList(grunt1));
+        ArrayList<Enemy> enemiesOnFloor = new ArrayList<>(Arrays.asList(grunt1));
 
         //main game loop
         while (true){
@@ -28,7 +28,7 @@ public class Main {
                 break;
             }
 
-            char[][] map = Floor.makeFloor(width, height, player, );
+            char[][] map = Floor.makeFloor(width, height, player, enemiesOnFloor);
             Floor floor1 = new Floor(width, height, map);
 
             //clears/prints screen
@@ -39,8 +39,7 @@ public class Main {
             player.movePlayer(player, input, floor1);
 
             //sets new player coordinates
-            player.setLocationCoordinates((player.locationX*10 + player.locationY)/10);
-            System.out.println(player.locationCoordinates);
+            System.out.println(player.getLocation());
             System.out.println(player.HP);
 
         }

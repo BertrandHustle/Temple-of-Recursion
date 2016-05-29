@@ -9,20 +9,21 @@ public class Enemy {
     private int locationX = 6;
     private int locationY = 6;
 
-    //use X & Y to build this number
-    private double locationCoordinates = 6.6;
+    private Location location = new Location(locationX, locationY);
     private int HP = 2;
     private char model = 'g';
 
+    //todo: make constructor that randomizes locationCoordinates
+
     //iterates through list of enemies on current floor and returns Enemy based on location coordinates
-    public Enemy getEnemy (Floor floor, double coordinates){
+    public Enemy getEnemy (Floor floor,  Location location){
 
         //init
         ArrayList<Enemy> enemiesOnFloor = floor.getEnemiesOnFloor();
         Enemy selectedEnemy = new Enemy();
 
         for (Enemy enemy : enemiesOnFloor){
-            if (enemy.locationCoordinates == coordinates){
+            if (enemy.location == location){
                 selectedEnemy = enemy;
             }
         }
@@ -52,7 +53,7 @@ public class Enemy {
         return locationY;
     }
 
-    public void setLocationCoordinates(double locationCoordinates) {
-        this.locationCoordinates = locationCoordinates;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }

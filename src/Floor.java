@@ -24,18 +24,18 @@ public class Floor {
         for (int x = 0; x < width; x++){
             for (int y = 0; y < height; y++){
 
-                //checks for player location and inputs on map, else prints empty space
-                if (player.locationX == x && player.locationY == y) {
+                //checks for player location and inputs on map if space is empty, else prints empty space
+                if (player.locationX == x && player.locationY == y && floor[x][y] != ' ' ) {
                     floor[x][y] = player.toChar();
-                } else {
+                } else if (floor[x][y] == '\u0000'){
                     floor[x][y] = '_';
                 }
 
                 //prints enemies on maps
                 for (Enemy enemy : enemies){
-                    if(enemy.getLocationX() == x && enemy.getLocationY() == y) {
+                    if(enemy.getLocationX() == x && enemy.getLocationY() == y && floor[x][y] != ' ') {
                         floor[x][y] = enemy.toChar();
-                    } else {
+                    } else if (floor[x][y] == '\u0000'){
                         floor[x][y] = '_';
                     }
                 }

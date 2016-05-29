@@ -1,5 +1,3 @@
-import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 
 /**
  * This denotes the player
@@ -10,7 +8,9 @@ public class Player {
     char model = '@';
     int locationX = 5;
     int locationY = 5;
-    double locationCoordinates = 5.5;
+
+    private Location location = new Location(locationX, locationY);
+
     int HP = 20;
     int ATK = 2;
     //keeps track of number of turns player takes (use to track enemy turns)
@@ -76,7 +76,11 @@ public class Player {
         return model;
     }
 
-    public void setLocationCoordinates(double locationCoordinates) {
-        this.locationCoordinates = locationCoordinates;
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 }
