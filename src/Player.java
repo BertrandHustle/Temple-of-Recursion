@@ -22,12 +22,20 @@ public class Player {
 
         switch(input){
 
+
             //if blocks prevent player from moving off of grid
 
             //move right
-            case "d":
-                if (player.locationY != floor.getWidth() - 1) {
+            //todo: simplify this so collision includes walls
+            case "d": if (player.locationY != floor.getWidth() - 1) {
                     player.locationY++;
+                    turns++;
+                }
+
+                //"undoes" move if player hits an enemy or wall
+                if (player.playerCollide(floor)){
+                    player.locationY--;
+                    turns++;
                 }
 
                 break;
@@ -35,6 +43,13 @@ public class Player {
             //move left
             case "a": if (player.locationY != 0) {
                 player.locationY--;
+                turns++;
+
+                if (player.playerCollide(floor)){
+                    player.locationY++;
+                    turns++;
+                }
+
             }
 
                 break;
@@ -42,14 +57,26 @@ public class Player {
             //move up
             case "w": if (player.locationX != 0) {
                 player.locationX--;
+                turns++;
             }
+
+                if (player.playerCollide(floor)){
+                    player.locationX++;
+                    turns++;
+                }
 
                 break;
 
             //move down
             case "s": if (player.locationX != floor.getHeight() - 1) {
                 player.locationX++;
+                turns++;
             }
+
+                if (player.playerCollide(floor)){
+                    player.locationX--;
+                    turns++;
+                }
 
                 break;
         }
@@ -57,18 +84,31 @@ public class Player {
     }
 
     //attacks enemies
-    public void attack(Floor floor){
+    public boolean playerCollide(Floor floor){
 
         //checks if player has collided with enemy
 
+        boolean collision = false;
 
-        if (floor.getMap()[locationX][locationY] == 'g'){
+        char object = floor.getMap()[locationX][locationY];
 
-            //get enemy at location of 'g' by querying ArrayList against enemy location
+        if (object != '_'){
+
+            //get object location
+            Location objectLocation = new Location(locationX, locationY);
+
+            //if the object is an enemy
+            if (Character.isLowerCase(object)){
+                collision = true;
+            }
+
+
             //Enemy defender = floor.getEnemiesOnFloor();
 
 
         }
+
+        return collision;
     }
 
     //prints player model

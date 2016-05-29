@@ -36,6 +36,9 @@ public class Main {
             Floor.toString(floor1);
 
             String input = scanner.next();
+
+            //checks if player has collided with an immovable object (e.g. enemy)
+
             player.movePlayer(player, input, floor1);
 
             //sets new player coordinates
