@@ -25,11 +25,17 @@ public class Main {
 
             //Game Over
             if (player.HP == 0){
+                System.out.println("YOU DIED");
+                System.out.println("TRY AGAIN?");
+
+                //todo: set this so game restarts if user types "Y", breaks if they type "N"
+
                 break;
             }
 
-            char[][] map = Floor.makeFloor(width, height, player, enemiesOnFloor);
-            Floor floor1 = new Floor(width, height, map);
+            Floor floor1 = new Floor(width, height, enemiesOnFloor, player);
+
+            char[][] map = floor1.getMap();
 
             //clears/prints screen
             System.out.print("\033[H\033[2J");
@@ -43,7 +49,7 @@ public class Main {
 
             //sets new player coordinates
             System.out.println(player.getLocation());
-            System.out.println(player.HP);
+            System.out.println("HP: " + player.HP);
 
         }
     }

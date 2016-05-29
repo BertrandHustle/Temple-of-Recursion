@@ -9,6 +9,9 @@ public class Player {
     int locationX = 5;
     int locationY = 5;
 
+    //this denotes the direction the character is facing
+    String facing = "";
+
     private Location location = new Location(locationX, locationY);
 
     int HP = 20;
@@ -35,6 +38,7 @@ public class Player {
                 //"undoes" move if player hits an enemy or wall
                 if (player.playerCollide(floor)){
                     player.locationY--;
+                    facing = "right";
                     turns++;
                 }
 
@@ -47,6 +51,7 @@ public class Player {
 
                 if (player.playerCollide(floor)){
                     player.locationY++;
+                    facing = "left";
                     turns++;
                 }
 
@@ -62,6 +67,7 @@ public class Player {
 
                 if (player.playerCollide(floor)){
                     player.locationX++;
+                    facing = "up";
                     turns++;
                 }
 
@@ -75,6 +81,7 @@ public class Player {
 
                 if (player.playerCollide(floor)){
                     player.locationX--;
+                    facing = "down";
                     turns++;
                 }
 
@@ -94,17 +101,30 @@ public class Player {
 
         if (object != '_'){
 
+            int objectLocationX = locationX;
+            int objectLocationY = locationY;
+
+            switch (facing){
+                case "right": objectLocationY++;
+                case "left": objectLocationY--;
+                case "up": objectLocationX--;
+                case "down": objectLocationX++;
+            }
+
             //get object location
-            Location objectLocation = new Location(locationX, locationY);
+            Location objectLocation = new Location(objectLocationX, objectLocationY);
 
             //if the object is an enemy
             if (Character.isLowerCase(object)){
                 collision = true;
+
+                Enemy enemy = Enemy.getEnemy(objectLocation, floor.getEnemiesOnFloor());
+                int enemyHP = enemy.getHP();
+
+                HP = HP - enemy.getATK();
+
+                enemy.setHP(enemyHP - ATK);
             }
-
-
-            //Enemy defender = floor.getEnemiesOnFloor();
-
 
         }
 
