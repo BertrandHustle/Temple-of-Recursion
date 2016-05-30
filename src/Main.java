@@ -1,5 +1,4 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -43,9 +42,13 @@ public class Main {
 
             String input = scanner.next();
 
-            //checks if player has collided with an immovable object (e.g. enemy)
-
+            //lets player move
             player.movePlayer(player, input, floor1);
+
+            //enemy moves after player
+            for (Enemy enemy: enemiesOnFloor){
+                enemy.movement(enemy, floor1);
+            }
 
             //sets new player coordinates
             System.out.println(player.getLocation());

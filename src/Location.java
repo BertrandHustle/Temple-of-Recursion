@@ -12,16 +12,16 @@ public class Location <Xcoord,Ycoord>{
         this.y = y;
     }
 
-    public Xcoord getX() {
-        return x;
+    public int getX() {
+        return (Integer)x;
     }
 
     public void setX(Xcoord x) {
         this.x = x;
     }
 
-    public Ycoord getY() {
-        return y;
+    public int getY() {
+        return (Integer)y;
     }
 
     public void setY(Ycoord y) {
